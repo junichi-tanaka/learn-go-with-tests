@@ -3,7 +3,7 @@ package main
 import "math"
 
 type Shape interface {
-    Area() float64
+	Area() float64
 }
 
 type Rectangle struct {
@@ -21,4 +21,13 @@ type Circle struct {
 
 func (c Circle) Area() float64 {
 	return math.Pi * c.Radius * c.Radius
+}
+
+type Triangle struct {
+	Base   float64
+	Height float64
+}
+
+func (t Triangle) Area() float64 {
+	return 0
 }
