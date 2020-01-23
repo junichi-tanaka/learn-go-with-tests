@@ -3,6 +3,7 @@ package racer
 import (
 	"net/http"
 	"time"
+	"fmt"
 )
 
 func Racer(a, b string) (winner string, error error) {
@@ -11,6 +12,8 @@ func Racer(a, b string) (winner string, error error) {
 		return a, nil
 	case <-ping(b):
 		return b, nil
+	case <-time.After(10 * time.Second):
+		return "", fmt.Errorf("timed out waiting for %s and %s", a, b)
 	}
 }
 
